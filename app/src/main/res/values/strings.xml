@@ -9,4 +9,6 @@
     <string name="login_txt">Login</string>
     <string name="pwd_txt">Password</string>
     <string name="add_txt">Add password</string>
+    <string name="update_txt">update</string>
+    <string name="delete_txt">delete</string>
 </resources>

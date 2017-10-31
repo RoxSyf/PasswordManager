@@ -26,7 +26,7 @@ public class AddPasswordActivity extends Activity implements View.OnClickListene
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle("Add login/password");
+        setTitle("Add record");
         setContentView(R.layout.activity_add_record);
 
         mLoginEditText = (EditText) findViewById(R.id.et_login);
