@@ -6,7 +6,7 @@
     android:padding="20dp">
 
     <EditText
-        android:id="@+id/subject_edittext"
+        android:id="@+id/et_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -16,14 +16,14 @@
     </EditText>
 
     <EditText
-        android:id="@+id/description_edittext"
+        android:id="@+id/et_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/pwd_txt" />
 
     <Button
-        android:id="@+id/add_record"
+        android:id="@+id/bt_add_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
