@@ -1,5 +1,7 @@
 package he2b.esi.g41077.passwordmanager;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
+import he2b.esi.g41077.passwordmanager.database.DatabaseHelper;
 import he2b.esi.g41077.passwordmanager.database.DatabaseManager;
 
 public class MainActivity extends AppCompatActivity
@@ -24,10 +29,45 @@ public class MainActivity extends AppCompatActivity
     private ListView mPasswordListView;
     private SimpleCursorAdapter mCursorAdapter;
 
+    final String[] from = new String[]{DatabaseHelper._ID, DatabaseHelper.LOGIN, DatabaseHelper.PWD};
+    final int[] to = new int[]{R.id.tv_id, R.id.tv_login, R.id.tv_pwd};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mDBManager = new DatabaseManager(this);
+        mDBManager.open();
+        Cursor cursor = mDBManager.fetch();
+
+        mPasswordListView = (ListView) findViewById(R.id.lv_passwords);
+        mPasswordListView.setEmptyView(findViewById(R.id.tv_empty));
+
+        mCursorAdapter = new SimpleCursorAdapter(this, R.layout.view_record, cursor, from, to, 0);
+        mCursorAdapter.notifyDataSetChanged();
+        mPasswordListView.setAdapter(mCursorAdapter);
+
+        mPasswordListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView idTextView = (TextView) view.findViewById(R.id.tv_id);
+                TextView titleTextView = (TextView) view.findViewById(R.id.tv_login);
+                TextView descTextView = (TextView) view.findViewById(R.id.tv_pwd);
+
+                String id = idTextView.getText().toString();
+                String title = titleTextView.getText().toString();
+                String desc = descTextView.getText().toString();
+
+                Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
+                modify_intent.putExtra("title", title);
+                modify_intent.putExtra("desc", desc);
+                modify_intent.putExtra("id", id);
+
+                startActivity(modify_intent);
+            }
+        });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
