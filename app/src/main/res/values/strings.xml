@@ -6,4 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="tv_empty_text">No passwords found</string>
+    <string name="login_txt">Login</string>
+    <string name="pwd_txt">Password</string>
+    <string name="add_txt">Add password</string>
 </resources>
