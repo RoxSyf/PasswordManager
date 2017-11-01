@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity
                 String title = titleTextView.getText().toString();
                 String desc = descTextView.getText().toString();
 
-                Intent modify_intent = new Intent(getApplicationContext(), ModifyCountryActivity.class);
-                modify_intent.putExtra("title", title);
-                modify_intent.putExtra("desc", desc);
+                Intent modify_intent = new Intent(getApplicationContext(), ModifyPasswordActivity.class);
                 modify_intent.putExtra("id", id);
+                modify_intent.putExtra("login", title);
+                modify_intent.putExtra("password", desc);
 
                 startActivity(modify_intent);
             }
@@ -94,8 +94,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(view.getContext(), AddPasswordActivity.class));
             }
         });
     }

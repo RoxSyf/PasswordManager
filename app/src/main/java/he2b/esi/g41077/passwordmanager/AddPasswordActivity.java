@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -14,7 +15,7 @@ import he2b.esi.g41077.passwordmanager.database.DatabaseManager;
  * Created by g41077 on 31/10/2017.
  */
 
-public class AddPasswordActivity extends Activity implements View.OnClickListener {
+public class AddPasswordActivity extends Activity implements OnClickListener {
 
     private Button mAddButton;
     private EditText mLoginEditText;
