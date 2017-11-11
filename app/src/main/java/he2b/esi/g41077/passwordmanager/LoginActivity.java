@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    private static final String TAG = "EmailPassword";
+    // firebase authentificator
     private FirebaseAuth mAuth;
 
     // ui

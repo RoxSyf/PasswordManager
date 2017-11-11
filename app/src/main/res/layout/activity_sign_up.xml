@@ -44,14 +44,14 @@
         android:ems="10"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/bt_login"
+        app:layout_constraintBottom_toTopOf="@+id/bt_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
 
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/bt_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="27dp"
@@ -73,19 +73,19 @@
         app:layout_constraintBottom_toTopOf="@+id/linear_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_register" />
 
     <LinearLayout
         android:id="@+id/linear_or"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_login"
+        android:layout_below="@+id/bt_register"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tv_signup"
+        app:layout_constraintBottom_toTopOf="@+id/tv_signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password">
@@ -111,7 +111,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_signup"
+        android:id="@+id/tv_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
