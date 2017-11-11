@@ -1,13 +1,14 @@
 package he2b.esi.g41077.passwordmanager;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.Activity;
 
-public class ConnectedActivity extends AppCompatActivity {
+public class DashboardActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connected);
+        setContentView(R.layout.activity_dashboard);
     }
+
 }

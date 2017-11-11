@@ -49,7 +49,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         // check if user is already connected
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, ConnectedActivity.class));
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
         }
     }
 

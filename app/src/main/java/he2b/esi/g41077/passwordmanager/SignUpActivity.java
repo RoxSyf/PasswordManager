@@ -45,6 +45,9 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
         mTvForgot = findViewById(R.id.tv_forgot_password);
         mTvSignUp = findViewById(R.id.tv_signin);
 
+        // activity
+        mActivitySignUp = findViewById(R.id.activity_sign_up);
+
         // binding
         mBtCreateAccount.setOnClickListener(this);
         mTvForgot.setOnClickListener(this);
@@ -76,7 +79,7 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
                             mSnackbar = Snackbar.make(mActivitySignUp, "Error: " + task.getException(), Snackbar.LENGTH_SHORT);
                             mSnackbar.show();
                         } else {
-                            mSnackbar = Snackbar.make(mActivitySignUp, "", Snackbar.LENGTH_SHORT);
+                            mSnackbar = Snackbar.make(mActivitySignUp, "Account has been successfully created!", Snackbar.LENGTH_SHORT);
                             mSnackbar.show();
                         }
                     }

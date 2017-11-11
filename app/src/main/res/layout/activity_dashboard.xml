@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="he2b.esi.g41077.passwordmanager.ConnectedActivity">
+    tools:context="he2b.esi.g41077.passwordmanager.DashboardActivity">
 
 </android.support.constraint.ConstraintLayout>
