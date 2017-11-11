@@ -1,14 +1,11 @@
 <resources>
-    <string name="app_name">Password Manager</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-    <string name="tv_empty_text">No passwords found</string>
-    <string name="login_txt">Login</string>
-    <string name="pwd_txt">Password</string>
-    <string name="add_txt">Add password</string>
-    <string name="update_txt">update</string>
-    <string name="delete_txt">delete</string>
+    <string name="app_name">PasswordManager</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_login">Login</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_email">Email</string>
+    <string name="desc_logo">Logo</string>
+    <string name="tv_or">OR</string>
+    <string name="tv_forgot">FORGOT PASSWORD?</string>
+    <string name="tv_sign_up">NOT REGISTERED YET? SIGN UP NOW</string>
 </resources>
