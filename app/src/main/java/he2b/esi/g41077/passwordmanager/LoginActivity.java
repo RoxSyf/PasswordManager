@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,11 +20,26 @@ public class LoginActivity extends Activity {
     private static final String TAG = "EmailPassword";
     private FirebaseAuth mAuth;
 
+    // ui
+    private Button mBtLogin;
+    private EditText mEtEmail;
+    private EditText mEtPassword;
+    private TextView mTvForgot;
+    private TextView mTvSignup;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivy_login);
         mAuth = FirebaseAuth.getInstance();
+
+        // view
+        mBtLogin = findViewById(R.id.bt_login);
+        mEtEmail = findViewById(R.id.et_email);
+        mEtPassword = findViewById(R.id.et_password);
+        mTvForgot = findViewById(R.id.tv_forgot_password);
+        mTvSignup = findViewById(R.id.tv_signup);
     }
 
     @Override

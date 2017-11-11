@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "232729787975",
-    "firebase_url": "https://passwordmanager-7b191.firebaseio.com",
-    "project_id": "passwordmanager-7b191",
-    "storage_bucket": "passwordmanager-7b191.appspot.com"
+    "project_number": "15108815002",
+    "firebase_url": "https://password-manager-2a310.firebaseio.com",
+    "project_id": "password-manager-2a310",
+    "storage_bucket": "password-manager-2a310.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:232729787975:android:33bfe2c36f9660e7",
+        "mobilesdk_app_id": "1:15108815002:android:33bfe2c36f9660e7",
         "android_client_info": {
           "package_name": "he2b.esi.g41077.passwordmanager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "232729787975-bnh16spjg9v45cjgdi2i54g6jqirmqco.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "he2b.esi.g41077.passwordmanager",
-            "certificate_hash": "ffe15031a017a92c70df8d1e328fc4ae3f6ef7ba"
-          }
-        },
-        {
-          "client_id": "232729787975-2ofussj6v8lrgmehm1e1ftp3bm0tel5b.apps.googleusercontent.com",
+          "client_id": "15108815002-sp75mjvehcdm71kmqbqp8p8eqjesgfh9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCgjaBW1bhmdLoBrq4AZR0tsV6HIsRueo0"
+          "current_key": "AIzaSyD3U19Twow2QdBfYhS7K-K2TrdKFoxFogM"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "232729787975-2ofussj6v8lrgmehm1e1ftp3bm0tel5b.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
