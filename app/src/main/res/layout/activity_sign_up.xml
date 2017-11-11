@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="he2b.esi.g41077.passwordmanager.LoginActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context="he2b.esi.g41077.passwordmanager.SignUpActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -15,13 +14,13 @@
         android:layout_marginTop="24dp"
         android:contentDescription="@string/desc_logo"
         android:src="@mipmap/lock"
-        app:layout_constraintBottom_toTopOf="@+id/et_email"
+        app:layout_constraintBottom_toTopOf="@+id/et_email_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/et_email_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
@@ -30,13 +29,13 @@
         android:ems="10"
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/et_password"
+        app:layout_constraintBottom_toTopOf="@+id/et_password_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/et_password_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -48,7 +47,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
+
 
     <Button
         android:id="@+id/bt_login"
@@ -57,11 +57,11 @@
         android:layout_marginBottom="27dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="@string/tv_login"
+        android:text="@string/create_account"
         app:layout_constraintBottom_toTopOf="@+id/tv_forgot_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
 
     <TextView
         android:id="@+id/tv_forgot_password"
@@ -115,12 +115,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
-        android:text="@string/tv_sign_up"
+        android:text="@string/tv_already_account"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_or" />
 
-</android.support.constraint.ConstraintLayout>
 
+</android.support.constraint.ConstraintLayout>
