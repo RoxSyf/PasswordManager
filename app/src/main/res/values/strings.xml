@@ -12,10 +12,6 @@
     <string name="tv_already_account">ALREADY HAVE AN ACCOUNT? SIGN IN</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -26,4 +22,8 @@
     <string name="tv_reset">Reset password</string>
     <string name="tv_forgot_password">Forgot password?</string>
     <string name="tv_reset_password">We need your registered email to sent you password reset instructions.</string>
+    <string name="tv_logout">Logout</string>
+    <string name="tv_change_password">Change password</string>
+    <string name="tv_welcome">Welcome</string>
+    <string name="tv_enter_new_password">Enter new password</string>
 </resources>
