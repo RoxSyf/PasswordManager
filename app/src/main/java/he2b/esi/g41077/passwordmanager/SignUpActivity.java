@@ -27,10 +27,9 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
     private Button mBtCreateAccount;
     private TextView mTvForgot;
     private TextView mTvSignUp;
-    private Snackbar mSnackbar;
 
     // activity
-    ConstraintLayout mActivitySignUp;
+    private ConstraintLayout mActivitySignUp;
 
 
     @Override
@@ -76,10 +75,10 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            mSnackbar = Snackbar.make(mActivitySignUp, "Error: " + task.getException(), Snackbar.LENGTH_SHORT);
+                            Snackbar mSnackbar = Snackbar.make(mActivitySignUp, "Error: " + task.getException(), Snackbar.LENGTH_SHORT);
                             mSnackbar.show();
                         } else {
-                            mSnackbar = Snackbar.make(mActivitySignUp, "Account has been successfully created!", Snackbar.LENGTH_SHORT);
+                            Snackbar mSnackbar = Snackbar.make(mActivitySignUp, "Account has been successfully created!", Snackbar.LENGTH_SHORT);
                             mSnackbar.show();
                         }
                     }

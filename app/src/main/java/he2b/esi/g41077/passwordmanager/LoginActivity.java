@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +28,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private TextView mTvForgot;
     private TextView mTvSignup;
 
+    // activity
+    private ConstraintLayout mActivityLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mEtPassword = findViewById(R.id.et_password);
         mTvForgot = findViewById(R.id.tv_forgot_password);
         mTvSignup = findViewById(R.id.tv_signup);
+        mActivityLogin = findViewById(R.id.activity_login);
 
         // binding
         mBtLogin.setOnClickListener(this);
@@ -71,8 +77,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-
+                        if (!task.isSuccessful()) {
+                            if (mEtPassword.length() < 6) {
+                                Snackbar snackBar = Snackbar.make(mActivityLogin, "Password must be at least 6 characters long!", Snackbar.LENGTH_SHORT);
+                                snackBar.show();
+                            }
+                        } else {
+                            System.out.println("ok");
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                         }
                     }
                 });
