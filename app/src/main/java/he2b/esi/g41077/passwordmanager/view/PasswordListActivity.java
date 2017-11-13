@@ -1,7 +1,9 @@
-package he2b.esi.g41077.passwordmanager;
+package he2b.esi.g41077.passwordmanager.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import he2b.esi.g41077.passwordmanager.R;
 
 public class PasswordListActivity extends AppCompatActivity {
 

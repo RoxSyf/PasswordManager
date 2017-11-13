@@ -1,4 +1,4 @@
-package he2b.esi.g41077.passwordmanager;
+package he2b.esi.g41077.passwordmanager.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import he2b.esi.g41077.passwordmanager.R;
 
 public class SignUpActivity extends Activity implements View.OnClickListener {
 

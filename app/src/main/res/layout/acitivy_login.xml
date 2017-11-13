@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_login"
-    tools:context="he2b.esi.g41077.passwordmanager.LoginActivity"
+    tools:context="he2b.esi.g41077.passwordmanager.view.LoginActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
