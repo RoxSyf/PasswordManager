@@ -58,6 +58,7 @@ public class DashboardActivity extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bt_change_password) {
+            if(mEtNewPassword.getText().toString().trim().length() != 0)
             changePassword(mEtNewPassword.getText().toString());
         } else if (view.getId() == R.id.bt_logout) {
             signOut();
