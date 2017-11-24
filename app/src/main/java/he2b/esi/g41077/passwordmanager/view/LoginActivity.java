@@ -20,10 +20,8 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentification
     private FirebaseAuth mAuth;
 
-    // ui
     private Button mBtLogin;
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -38,17 +36,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivy_login);
-
-        // view
-        initView();
-
-        // bindings
-        initBindings();
-
-        // init firebase auth
         mAuth = FirebaseAuth.getInstance();
-
-        // check if user is already connected
+        initView();
+        initBindings();
         isUserConnected();
     }
 

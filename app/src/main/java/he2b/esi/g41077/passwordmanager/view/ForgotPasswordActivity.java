@@ -19,35 +19,33 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class ForgotPasswordActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentification
     private FirebaseAuth mAuth;
 
-    // ui
     private EditText mEtEmail;
     private Button mBtReset;
     private TextView mTvBack;
 
-    // activity
     private ConstraintLayout mActivityForgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        mAuth = FirebaseAuth.getInstance();
+        initView();
+        initBindings();
+    }
 
-        // view
+    private void initBindings() {
+        mBtReset.setOnClickListener(this);
+        mTvBack.setOnClickListener(this);
+    }
+
+    private void initView() {
         mEtEmail = findViewById(R.id.et_email_forgot);
         mBtReset = findViewById(R.id.bt_reset_password);
         mTvBack = findViewById(R.id.tv_back);
         mActivityForgotPassword = findViewById(R.id.activity_forgot_password);
-
-        // init firebase auth
-        mAuth = FirebaseAuth.getInstance();
-
-        // binding
-        mBtReset.setOnClickListener(this);
-        mTvBack.setOnClickListener(this);
-
     }
 
     @Override

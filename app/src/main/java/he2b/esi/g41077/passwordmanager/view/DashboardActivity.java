@@ -20,10 +20,8 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class DashboardActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentification
     private FirebaseAuth mAuth;
 
-    // ui
     private ConstraintLayout mActivityDashboard;
     private TextView mTvWelcome;
     private EditText mEtNewPassword;
@@ -34,33 +32,36 @@ public class DashboardActivity extends Activity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-
-        // view
-        mActivityDashboard = findViewById(R.id.activity_dashboard);
-        mTvWelcome = findViewById(R.id.tv_welcome_dashboard);
-        mEtNewPassword = findViewById(R.id.et_new_password);
-        mBtChangePassword = findViewById(R.id.bt_change_password);
-        mBtLogout = findViewById(R.id.bt_logout);
-
-        // binding
-        mBtChangePassword.setOnClickListener(this);
-        mBtLogout.setOnClickListener(this);
-
-        // init firebase auth
         mAuth = FirebaseAuth.getInstance();
+        initView();
+        initBindings();
+        initWelcomeMessage();
+    }
 
-        // session check
+    private void initWelcomeMessage() {
         if (mAuth.getCurrentUser() != null) {
             mTvWelcome.setText("Welcome, " + mAuth.getCurrentUser().getEmail());
         }
     }
 
+    private void initBindings() {
+        mBtChangePassword.setOnClickListener(this);
+        mBtLogout.setOnClickListener(this);
+    }
+
+    private void initView() {
+        mActivityDashboard = findViewById(R.id.activity_dashboard);
+        mTvWelcome = findViewById(R.id.tv_welcome_dashboard);
+        mEtNewPassword = findViewById(R.id.et_new_password);
+        mBtChangePassword = findViewById(R.id.bt_change_password);
+        mBtLogout = findViewById(R.id.bt_logout);
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bt_change_password) {
-            if(mEtNewPassword.getText().toString().trim().length() != 0)
-            changePassword(mEtNewPassword.getText().toString());
+            if (mEtNewPassword.getText().toString().trim().length() != 0)
+                changePassword(mEtNewPassword.getText().toString());
         } else if (view.getId() == R.id.bt_logout) {
             signOut();
         }

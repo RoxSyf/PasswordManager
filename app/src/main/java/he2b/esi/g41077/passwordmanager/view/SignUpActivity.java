@@ -20,17 +20,14 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class SignUpActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentificator
     private FirebaseAuth mAuth;
 
-    // ui
     private EditText mEtEmail;
     private EditText mEtPassword;
     private Button mBtCreateAccount;
     private TextView mTvForgot;
     private TextView mTvSignUp;
 
-    // activity
     private ConstraintLayout mActivitySignUp;
 
 
@@ -38,24 +35,24 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        mAuth = FirebaseAuth.getInstance();
+        initView();
+        initBindings();
+    }
 
-        // view
+    private void initBindings() {
+        mBtCreateAccount.setOnClickListener(this);
+        mTvForgot.setOnClickListener(this);
+        mTvSignUp.setOnClickListener(this);
+    }
+
+    private void initView() {
         mEtEmail = findViewById(R.id.et_email_signup);
         mEtPassword = findViewById(R.id.et_password_signup);
         mBtCreateAccount = findViewById(R.id.bt_register);
         mTvForgot = findViewById(R.id.tv_forgot_password);
         mTvSignUp = findViewById(R.id.tv_signin);
-
-        // activity
         mActivitySignUp = findViewById(R.id.activity_sign_up);
-
-        // binding
-        mBtCreateAccount.setOnClickListener(this);
-        mTvForgot.setOnClickListener(this);
-        mTvSignUp.setOnClickListener(this);
-
-        // init firebase auth
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
