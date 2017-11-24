@@ -20,7 +20,7 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class DashboardActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentificator
+    // firebase authentification
     private FirebaseAuth mAuth;
 
     // ui
@@ -34,6 +34,7 @@ public class DashboardActivity extends Activity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
 
         // view
         mActivityDashboard = findViewById(R.id.activity_dashboard);

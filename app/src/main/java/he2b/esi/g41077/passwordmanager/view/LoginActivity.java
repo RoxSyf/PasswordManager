@@ -20,7 +20,7 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    // firebase authentificator
+    // firebase authentification
     private FirebaseAuth mAuth;
 
     // ui
@@ -40,25 +40,37 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.acitivy_login);
 
         // view
+        initView();
+
+        // bindings
+        initBindings();
+
+        // init firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
+        // check if user is already connected
+        isUserConnected();
+    }
+
+    private void isUserConnected() {
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+        }
+    }
+
+    private void initBindings() {
+        mBtLogin.setOnClickListener(this);
+        mTvForgot.setOnClickListener(this);
+        mTvSignup.setOnClickListener(this);
+    }
+
+    private void initView() {
         mBtLogin = findViewById(R.id.bt_login);
         mEtEmail = findViewById(R.id.et_email);
         mEtPassword = findViewById(R.id.et_password);
         mTvForgot = findViewById(R.id.tv_forgot_password);
         mTvSignup = findViewById(R.id.tv_signup);
         mActivityLogin = findViewById(R.id.activity_login);
-
-        // binding
-        mBtLogin.setOnClickListener(this);
-        mTvForgot.setOnClickListener(this);
-        mTvSignup.setOnClickListener(this);
-
-        // init firebase auth
-        mAuth = FirebaseAuth.getInstance();
-
-        // check if user is already connected
-        if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-        }
     }
 
     @Override
@@ -85,7 +97,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 snackBar.show();
                             }
                         } else {
-                            System.out.println("ok");
                             startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                         }
                     }

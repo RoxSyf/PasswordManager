@@ -19,6 +19,9 @@ import he2b.esi.g41077.passwordmanager.R;
 
 public class ForgotPasswordActivity extends Activity implements View.OnClickListener {
 
+    // firebase authentification
+    private FirebaseAuth mAuth;
+
     // ui
     private EditText mEtEmail;
     private Button mBtReset;
@@ -26,9 +29,6 @@ public class ForgotPasswordActivity extends Activity implements View.OnClickList
 
     // activity
     private ConstraintLayout mActivityForgotPassword;
-
-    // firebase authentificator
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
