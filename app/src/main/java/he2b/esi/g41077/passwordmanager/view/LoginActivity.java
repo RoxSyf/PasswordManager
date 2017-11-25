@@ -13,9 +13,11 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import he2b.esi.g41077.passwordmanager.EntryListActivity;
 import he2b.esi.g41077.passwordmanager.R;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
@@ -87,7 +89,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 snackBar.show();
                             }
                         } else {
-                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                            startActivity(new Intent(LoginActivity.this, EntryListActivity.class));
                         }
                     }
                 });
