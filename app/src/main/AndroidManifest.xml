@@ -19,7 +19,6 @@
         <activity android:name=".view.ForgotPasswordActivity" />
         <activity android:name=".view.SignUpActivity" />
         <activity android:name=".view.DashboardActivity" />
-        <activity android:name=".view.PasswordListActivity"></activity>
     </application>
 
 </manifest>
