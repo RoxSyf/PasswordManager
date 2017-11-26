@@ -20,6 +20,7 @@
         <activity android:name=".view.SignUpActivity" />
         <activity android:name=".view.DashboardActivity" />
         <activity android:name=".EntryListActivity" />
+        <activity android:name=".AddEntryActivity"></activity>
     </application>
 
 </manifest>
