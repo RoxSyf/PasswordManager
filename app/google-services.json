@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "15108815002-la2dle673ai15lgapfaqltrgj7od6uov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "he2b.esi.g41077.passwordmanager",
+            "certificate_hash": "397ba8b96c9b377cfb7e65a2f2778f2e0af3c0ad"
+          }
+        },
+        {
           "client_id": "15108815002-uka78dj6h1inf4fn1ajn78qcdmg1hjdb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
