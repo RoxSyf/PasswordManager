@@ -1,4 +1,4 @@
-package he2b.esi.g41077.passwordmanager;
+package he2b.esi.g41077.passwordmanager.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import he2b.esi.g41077.passwordmanager.R;
+import he2b.esi.g41077.passwordmanager.adapters.EntryListAdapter;
 
 public class EntryListFragment extends Fragment {
 

@@ -1,10 +1,12 @@
-package he2b.esi.g41077.passwordmanager;
+package he2b.esi.g41077.passwordmanager.view;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
+import he2b.esi.g41077.passwordmanager.R;
 
 public abstract class SingleFragmentActivity extends Activity {
 
