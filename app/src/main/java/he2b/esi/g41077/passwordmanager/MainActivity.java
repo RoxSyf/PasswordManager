@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 etName.setText(entry.getmName());
             }
         });
-        
+
         // firebase
         initFirebase();
         addEventFirebaseListener();
