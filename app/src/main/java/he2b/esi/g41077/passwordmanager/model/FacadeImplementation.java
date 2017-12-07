@@ -10,6 +10,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class FacadeImplementation implements Facade {
 
@@ -28,15 +29,19 @@ public class FacadeImplementation implements Facade {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
             }
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
             }
+
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -47,7 +52,7 @@ public class FacadeImplementation implements Facade {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (entryList != null) {
-                        entryList.clear();
+                    entryList.clear();
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Entry entry = postSnapshot.getValue(Entry.class);
                         entryList.add(entry);
@@ -70,13 +75,17 @@ public class FacadeImplementation implements Facade {
 
     @Override
     public void deleteEntry(Entry selectedEntry) {
-        String currentUser = firebaseAuth.getCurrentUser().getUid();
-        databaseReference.child("users").child(currentUser).child("entries").child(selectedEntry.getmUid()).removeValue();
+        databaseReference.child("users").child(getCurrentUser()).child("entries").child(selectedEntry.getmUid()).removeValue();
     }
 
     @Override
     public void updateEntry(Entry selectedEntry) {
         // todo
+    }
+
+    @Override
+    public Entry getEntry(DataSnapshot dataSnapshot) {
+        return dataSnapshot.getValue(Entry.class);
     }
 
     @Override

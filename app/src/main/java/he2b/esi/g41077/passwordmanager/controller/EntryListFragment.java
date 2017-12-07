@@ -88,7 +88,10 @@ public class EntryListFragment extends Fragment {
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    intent.putExtra("entry_uid", mEntry.getmUid());
+                    startActivity(intent);
                 }
             });
         }

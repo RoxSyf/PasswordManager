@@ -7,12 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.UUID;
+
 import he2b.esi.g41077.passwordmanager.R;
+import he2b.esi.g41077.passwordmanager.model.Entry;
 import he2b.esi.g41077.passwordmanager.model.FacadeImplementation;
 
 public class EntryFragment extends Fragment {
 
     private FacadeImplementation util;
+
+    private Entry mEntry;
+    private UUID entryUid;
 
     private EditText mEntryName;
     private EditText mEntryLogin;
@@ -21,6 +31,10 @@ public class EntryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String tmp = getActivity().getIntent().getSerializableExtra("entry_uid").toString();
+        entryUid = UUID.fromString(tmp);
+
+
         util = new FacadeImplementation();
     }
 
@@ -33,6 +47,26 @@ public class EntryFragment extends Fragment {
         mEntryName = v.findViewById(R.id.et_entry_name);
         mEntryLogin = v.findViewById(R.id.et_entry_login);
         mEntryPassword = v.findViewById(R.id.et_entry_pwd);
+
+        util.getDatabaseReference()
+                .child("users")
+                .child(util.getCurrentUser())
+                .child("entries")
+                .child(entryUid.toString())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        mEntry = util.getEntry(snapshot);
+                        mEntryName.setText(mEntry.getmName());
+                        mEntryLogin.setText(mEntry.getmLogin());
+                        mEntryPassword.setText(mEntry.getmPassword());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
         return v;
     }
