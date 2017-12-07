@@ -1,4 +1,4 @@
-package he2b.esi.g41077.passwordmanager.view;
+package he2b.esi.g41077.passwordmanager.controller;
 
 import android.app.Activity;
 import android.content.Intent;

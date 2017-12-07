@@ -1,4 +1,4 @@
-package he2b.esi.g41077.passwordmanager.view;
+package he2b.esi.g41077.passwordmanager.controller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import he2b.esi.g41077.passwordmanager.MainActivity;
 import he2b.esi.g41077.passwordmanager.R;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
@@ -45,7 +44,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private void isUserConnected() {
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
         }
     }
 

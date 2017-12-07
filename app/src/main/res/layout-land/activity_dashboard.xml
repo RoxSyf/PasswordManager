@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="he2b.esi.g41077.passwordmanager.view.DashboardActivity"
+    tools:context="he2b.esi.g41077.passwordmanager.controller.DashboardActivity"
     tools:layout_editor_absoluteY="25dp">
 
 

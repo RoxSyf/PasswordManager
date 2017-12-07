@@ -1,5 +1,7 @@
 package he2b.esi.g41077.passwordmanager.model;
 
+import java.util.List;
+
 public interface Facade {
 
     void createEntry(Entry entry);
@@ -9,5 +11,7 @@ public interface Facade {
     void updateEntry(Entry selectedEntry);
 
     String getCurrentUser();
+
+    List<Entry> getUserEntries();
 
 }

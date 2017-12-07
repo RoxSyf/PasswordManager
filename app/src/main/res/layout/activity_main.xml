@@ -6,27 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="he2b.esi.g41077.passwordmanager.MainActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="@color/colorAccent" />
-
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Insert name here"
-        android:inputType="text" />
-
-    <ListView
-        android:id="@+id/lv_entries"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true" />
+    tools:context="he2b.esi.g41077.passwordmanager.view-controller.MainActivity">
 
 </LinearLayout>

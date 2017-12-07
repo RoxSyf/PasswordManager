@@ -1,24 +1,65 @@
 package he2b.esi.g41077.passwordmanager.model;
 
-import android.content.Context;
-import android.widget.ListView;
-
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FacadeImplementation implements Facade {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private List<Entry> entryList = new ArrayList<>();
 
-    public FacadeImplementation(Context context) {
-        FirebaseApp.initializeApp(context);
+    public FacadeImplementation() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        // todo refactor
+        getDatabaseReference().child("users").child(getCurrentUser()).child("entries").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (entryList != null) {
+                        entryList.clear();
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Entry entry = postSnapshot.getValue(Entry.class);
+                        entryList.add(entry);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -43,8 +84,12 @@ public class FacadeImplementation implements Facade {
         return firebaseAuth.getCurrentUser().getUid();
     }
 
+    @Override
+    public List<Entry> getUserEntries() {
+        return entryList;
+    }
+
     public final DatabaseReference getDatabaseReference() {
         return databaseReference;
     }
-
 }
