@@ -1,5 +1,6 @@
 package he2b.esi.g41077.passwordmanager.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -78,6 +79,7 @@ public class EntryListFragment extends Fragment {
     }
 
     private class EntryHolder extends RecyclerView.ViewHolder {
+        private Entry mEntry;
         private TextView mEntryName;
 
         EntryHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -87,14 +89,12 @@ public class EntryListFragment extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(getActivity(), CrimeActivity.class);
-//                    intent.putExtra("crime_id", mCrime.getmId());
-//                    startActivity(intent);
                 }
             });
         }
 
         void bind(Entry entry) {
+            mEntry = entry;
             mEntryName.setText(entry.getmName());
         }
     }
