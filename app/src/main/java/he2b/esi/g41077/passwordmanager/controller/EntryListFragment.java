@@ -26,12 +26,10 @@ public class EntryListFragment extends Fragment {
     private RecyclerView mEntryRecyclerView;
     private EntryAdapter mEntryAdapter;
     private FacadeImplementation util;
-    private List<Entry> entries;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        entries = new ArrayList<>();
         util = new FacadeImplementation();
     }
 
@@ -39,7 +37,6 @@ public class EntryListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_entry_list, container, false);
-//        util.registerObserver(this);
         mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
         mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -81,10 +78,9 @@ public class EntryListFragment extends Fragment {
     }
 
     private class EntryHolder extends RecyclerView.ViewHolder {
-        private Entry mEntry;
         private TextView mEntryName;
 
-        public EntryHolder(LayoutInflater inflater, ViewGroup parent) {
+        EntryHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.entry_item, parent, false));
             mEntryName = (TextView) itemView.findViewById(R.id.tv_name);
 
@@ -98,8 +94,7 @@ public class EntryListFragment extends Fragment {
             });
         }
 
-        public void bind(Entry entry) {
-            mEntry = entry;
+        void bind(Entry entry) {
             mEntryName.setText(entry.getmName());
         }
     }
@@ -108,7 +103,7 @@ public class EntryListFragment extends Fragment {
 
         private List<Entry> mEntries;
 
-        public EntryAdapter() {
+        EntryAdapter() {
             mEntries = util.getUserEntries();
         }
 
