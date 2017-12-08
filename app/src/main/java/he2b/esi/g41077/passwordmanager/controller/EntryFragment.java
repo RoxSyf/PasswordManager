@@ -34,14 +34,12 @@ public class EntryFragment extends Fragment {
         String tmp = getActivity().getIntent().getSerializableExtra("entry_uid").toString();
         entryUid = UUID.fromString(tmp);
 
-
         util = new FacadeImplementation();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_entry, container, false);
 
         mEntryName = v.findViewById(R.id.et_entry_name);
@@ -64,10 +62,8 @@ public class EntryFragment extends Fragment {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
         return v;
     }
 }
