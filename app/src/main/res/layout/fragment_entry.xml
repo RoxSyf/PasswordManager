@@ -16,7 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="17dp">
+        android:paddingLeft="30dp"
+        android:paddingRight="40dp"
+        android:paddingTop="20dp">
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -24,12 +26,26 @@
             android:layout_height="wrap_content"
             android:text="@string/name" />
 
-        <EditText
-            android:id="@+id/et_entry_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_the_name_of_the_entry"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="logo"
+                android:paddingTop="6dp"
+                android:src="@drawable/ic_name" />
+
+            <EditText
+                android:id="@+id/et_entry_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_the_name_of_the_entry"
+                android:inputType="text" />
+
+        </LinearLayout>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -37,13 +53,25 @@
             android:layout_height="wrap_content"
             android:text="@string/login" />
 
-        <EditText
-            android:id="@+id/et_entry_login"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_the_login"
-            android:inputType="text" />
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="logo"
+                android:paddingTop="6dp"
+                android:src="@drawable/ic_login" />
+
+            <EditText
+                android:id="@+id/et_entry_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_the_login"
+                android:inputType="text" />
+        </LinearLayout>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -51,13 +79,26 @@
             android:layout_height="wrap_content"
             android:text="@string/password" />
 
-
-        <EditText
-            android:id="@+id/et_entry_pwd"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_the_password"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="logo"
+                android:paddingTop="6dp"
+                android:src="@drawable/ic_pwd" />
+
+            <EditText
+                android:id="@+id/et_entry_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_the_password"
+                android:inputType="text" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
