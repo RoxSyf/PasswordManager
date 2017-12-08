@@ -2,6 +2,8 @@ package he2b.esi.g41077.passwordmanager.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +43,13 @@ public class EntryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_entry, container, false);
+        initToolbar(v);
+        initView(v);
+        setView();
+        return v;
+    }
 
-        mEntryName = v.findViewById(R.id.et_entry_name);
-        mEntryLogin = v.findViewById(R.id.et_entry_login);
-        mEntryPassword = v.findViewById(R.id.et_entry_pwd);
-
+    private void setView() {
         util.getDatabaseReference()
                 .child("users")
                 .child(util.getCurrentUser())
@@ -64,6 +68,18 @@ public class EntryFragment extends Fragment {
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
-        return v;
+    }
+
+    private void initToolbar(View v) {
+        // add toolbar
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        toolbar.setTitle("Edit entry");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    }
+
+    private void initView(View v) {
+        mEntryName = v.findViewById(R.id.et_entry_name);
+        mEntryLogin = v.findViewById(R.id.et_entry_login);
+        mEntryPassword = v.findViewById(R.id.et_entry_pwd);
     }
 }
