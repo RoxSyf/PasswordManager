@@ -61,6 +61,8 @@ public class EntryListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add) {
             startActivity(new Intent(getActivity(), DetailActivity.class));
+        } else if (item.getItemId() == R.id.menu_dashboard) {
+            startActivity(new Intent(getActivity(), DashboardActivity.class));
         }
         return true;
     }
