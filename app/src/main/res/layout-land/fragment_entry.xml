@@ -56,15 +56,15 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/bt_entry_cancel"
+            android:id="@+id/bt_add_cancel_or_remove"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel" />
+            android:text="@string/edit" />
 
         <Button
-            android:id="@+id/bt_entry_confirm"
+            android:id="@+id/bt_add_confirm"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

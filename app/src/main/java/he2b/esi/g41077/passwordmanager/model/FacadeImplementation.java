@@ -80,7 +80,7 @@ public class FacadeImplementation implements Facade {
 
     @Override
     public void updateEntry(Entry selectedEntry) {
-        // todo
+        databaseReference.child("users").child(getCurrentUser()).child("entries").child(selectedEntry.getmUid()).setValue(selectedEntry);
     }
 
     @Override

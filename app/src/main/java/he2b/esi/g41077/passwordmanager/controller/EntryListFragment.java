@@ -9,6 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ public class EntryListFragment extends Fragment {
 
     private RecyclerView mEntryRecyclerView;
     private EntryAdapter mEntryAdapter;
+    private MenuItem mEntryAdd;
     private FacadeImplementation util;
 
     @Override
@@ -40,14 +44,28 @@ public class EntryListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_entry_list, container, false);
-        mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
-        mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        initView(v);
+        initToolbar(v);
+        setChildEventListener();
 
-        // add toolbar
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
-        toolbar.setTitle("Manager");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        return v;
+    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_add) {
+            startActivity(new Intent(getActivity(), DetailActivity.class));
+        }
+        return true;
+    }
+
+    private void setChildEventListener() {
         util.getDatabaseReference().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -72,8 +90,19 @@ public class EntryListFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
 
-        return v;
+    private void initToolbar(View v) {
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        toolbar.setTitle("Password Manager");
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    }
+
+    private void initView(View v) {
+        mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
+        mEntryAdd = v.findViewById(R.id.menu_add);
+        mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     private void updateUI() {

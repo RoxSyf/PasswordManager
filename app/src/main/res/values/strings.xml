@@ -33,7 +33,8 @@
     <string name="enter_the_login">Enter the login</string>
     <string name="password">Password</string>
     <string name="enter_the_password">Enter the password</string>
-    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
     <string name="confirm">Confirm</string>
     <string name="name">Name</string>
+    <string name="cancel">Cancel</string>
 </resources>
