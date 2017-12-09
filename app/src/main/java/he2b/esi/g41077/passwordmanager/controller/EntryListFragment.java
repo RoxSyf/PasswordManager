@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -32,6 +33,7 @@ public class EntryListFragment extends Fragment {
     private RecyclerView mEntryRecyclerView;
     private EntryAdapter mEntryAdapter;
     private FacadeImplementation util;
+    private ProgressBar mCircularProgressBar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +69,9 @@ public class EntryListFragment extends Fragment {
     }
 
     private void setChildEventListener() {
+        // charging the database
+        mCircularProgressBar.setVisibility(View.VISIBLE);
+        mEntryRecyclerView.setVisibility(View.INVISIBLE);
         util.getDatabaseReference().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -94,13 +99,14 @@ public class EntryListFragment extends Fragment {
     }
 
     private void initToolbar(View v) {
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        Toolbar toolbar = v.findViewById(R.id.toolbar);
         toolbar.setTitle("Password Manager");
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 
     private void initView(View v) {
+        mCircularProgressBar = v.findViewById(R.id.circular_progress_bar);
         mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
         mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -112,6 +118,8 @@ public class EntryListFragment extends Fragment {
         } else {
             mEntryAdapter.notifyDataSetChanged();
         }
+        mCircularProgressBar.setVisibility(View.INVISIBLE);
+        mEntryRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private class EntryHolder extends RecyclerView.ViewHolder {
@@ -120,7 +128,7 @@ public class EntryListFragment extends Fragment {
 
         EntryHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.entry_item, parent, false));
-            mEntryName = (TextView) itemView.findViewById(R.id.tv_name);
+            mEntryName = itemView.findViewById(R.id.tv_name);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
