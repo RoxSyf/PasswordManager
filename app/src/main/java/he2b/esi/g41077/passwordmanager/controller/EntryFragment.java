@@ -65,7 +65,6 @@ public class EntryFragment extends Fragment {
         return v;
     }
 
-
     private void initTypeOfActivity() {
         Serializable entry = getActivity().getIntent().getSerializableExtra("entry_uid");
         if (entry != null) {
@@ -79,11 +78,11 @@ public class EntryFragment extends Fragment {
         mEntryConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String encryptedPassword = util.cipherPassword(mEntryPassword.getText().toString());
                 String uid = UUID.randomUUID().toString();
                 String name = mEntryName.getText().toString();
                 String login = mEntryLogin.getText().toString();
-                String pwd = mEntryPassword.getText().toString();
-                util.createEntry(new Entry(uid, name, login, pwd));
+                util.createEntry(new Entry(uid, name, login, encryptedPassword));
                 getActivity().finish();
             }
         });
@@ -93,10 +92,11 @@ public class EntryFragment extends Fragment {
         mEntryConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String encryptedPassword = util.cipherPassword(mEntryPassword.getText().toString());
                 mEntry = new Entry(entryUid.toString(),
                         mEntryName.getText().toString(),
                         mEntryLogin.getText().toString(),
-                        mEntryPassword.getText().toString());
+                        encryptedPassword);
                 util.updateEntry(mEntry);
                 getActivity().finish();
             }
@@ -131,10 +131,11 @@ public class EntryFragment extends Fragment {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
+                        String encryptedPassword = util.cipherPassword(mEntryPassword.getText().toString());
                         mEntry = util.getEntry(snapshot);
                         mEntryName.setText(mEntry.getmName());
                         mEntryLogin.setText(mEntry.getmLogin());
-                        mEntryPassword.setText(mEntry.getmPassword());
+                        mEntryPassword.setText(encryptedPassword);
                     }
 
                     @Override

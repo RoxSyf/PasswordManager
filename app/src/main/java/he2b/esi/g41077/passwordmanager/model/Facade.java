@@ -19,4 +19,8 @@ public interface Facade {
 
     List<Entry> getUserEntries();
 
+    String cipherPassword(String password);
+
+    String decipherPassword(String encryptedPassword);
+
 }
