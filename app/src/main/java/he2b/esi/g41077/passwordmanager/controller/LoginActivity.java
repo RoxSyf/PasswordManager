@@ -82,12 +82,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            if (mEtPassword.length() < 6) {
-                                Snackbar snackBar = Snackbar.make(mActivityLogin, "Password must be at least 6 characters long!", Snackbar.LENGTH_SHORT);
-                                snackBar.show();
-                            }
+                            Snackbar snackBar = Snackbar.make(mActivityLogin, "Wrong email/password!", Snackbar.LENGTH_SHORT);
+                            snackBar.show();
                         } else {
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         }
                     }
                 });
