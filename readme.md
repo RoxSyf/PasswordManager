@@ -4,7 +4,7 @@ A simple password manager.
 
 |                            List                          |                            Add                           |                             Modify                       |
 |:--------------------------------------------------------:|:--------------------------------------------------------:|:--------------------------------------------------------:|
-|<img src="https://i.imgur.com/0ltEGxk.png" height="500" />|<img src="https://i.imgur.com/uPCgwQn.png" height="500" />|<img src="https://i.imgur.com/8B0HePW.png" height="500" />|
+|<img src="https://i.imgur.com/0ltEGxk.png" height="450" />|<img src="https://i.imgur.com/uPCgwQn.png" height="450" />|<img src="https://i.imgur.com/8B0HePW.png" height="450" />|
 
 ## <img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" /> Firebase Authentification 
 
@@ -20,7 +20,7 @@ email address you sign with.
 
 |                      Login                               |                 Reset password                           |                             Register                     |
 |:--------------------------------------------------------:|:--------------------------------------------------------:|:--------------------------------------------------------:|
-|<img src="https://i.imgur.com/w16H5CO.png" height="500" />|<img src="https://i.imgur.com/6mtWump.png" height="500" />|<img src="https://i.imgur.com/mehVlvF.jpg" height="500" />|
+|<img src="https://i.imgur.com/w16H5CO.png" height="450" />|<img src="https://i.imgur.com/6mtWump.png" height="450" />|<img src="https://i.imgur.com/mehVlvF.jpg" height="450" />|
 
 ## Encryption
 
