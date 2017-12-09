@@ -131,9 +131,9 @@ public class EntryFragment extends Fragment {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        String encryptedPassword = util.cipherPassword(mEntryPassword.getText().toString());
                         mEntry = util.getEntry(snapshot);
                         mEntryName.setText(mEntry.getmName());
+                        String encryptedPassword = util.decipherPassword(mEntry.getmPassword());
                         mEntryLogin.setText(mEntry.getmLogin());
                         mEntryPassword.setText(encryptedPassword);
                     }
