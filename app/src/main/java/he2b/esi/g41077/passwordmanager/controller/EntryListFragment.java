@@ -31,7 +31,6 @@ public class EntryListFragment extends Fragment {
 
     private RecyclerView mEntryRecyclerView;
     private EntryAdapter mEntryAdapter;
-    private MenuItem mEntryAdd;
     private FacadeImplementation util;
 
     @Override
@@ -103,7 +102,6 @@ public class EntryListFragment extends Fragment {
 
     private void initView(View v) {
         mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
-        mEntryAdd = v.findViewById(R.id.menu_add);
         mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
