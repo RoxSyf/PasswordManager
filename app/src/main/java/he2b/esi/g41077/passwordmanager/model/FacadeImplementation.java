@@ -36,6 +36,8 @@ public class FacadeImplementation implements Facade {
         getDatabaseReference().child("users").child(getCurrentUser()).child("entries").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                entryList.clear();
+                favoriteEntryList.clear();
                 if (entryList != null) {
                     entryList.clear();
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {

@@ -37,6 +37,8 @@ public class EntryListFragment extends Fragment {
     private ProgressBar mCircularProgressBar;
     private MenuItem mMenuFav;
 
+    private int access = 0;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +69,21 @@ public class EntryListFragment extends Fragment {
         } else if (item.getItemId() == R.id.menu_dashboard) {
             startActivity(new Intent(getActivity(), DashboardActivity.class));
         } else if (item.getItemId() == R.id.menu_favorite) {
-            mEntryAdapter = null;
-            updateUIFav();
+            setAdapter();
         }
         return true;
+    }
+
+    private void setAdapter() {
+        // not proud of this one - it's temporary of course
+        mEntryAdapter = null;
+        if (access % 2 == 0) {
+            updateUIFav();
+            access++;
+        } else {
+            updateUI();
+            access++;
+        }
     }
 
     private void setChildEventListener() {
