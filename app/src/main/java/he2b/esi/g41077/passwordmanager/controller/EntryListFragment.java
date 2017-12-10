@@ -35,6 +35,7 @@ public class EntryListFragment extends Fragment {
     private EntryAdapter mEntryAdapter;
     private FacadeImplementation util;
     private ProgressBar mCircularProgressBar;
+    private MenuItem mMenuFav;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +66,9 @@ public class EntryListFragment extends Fragment {
             startActivity(new Intent(getActivity(), DetailActivity.class));
         } else if (item.getItemId() == R.id.menu_dashboard) {
             startActivity(new Intent(getActivity(), DashboardActivity.class));
+        } else if (item.getItemId() == R.id.menu_favorite) {
+            mEntryAdapter = null;
+            updateUIFav();
         }
         return true;
     }
@@ -110,17 +114,26 @@ public class EntryListFragment extends Fragment {
         mCircularProgressBar = v.findViewById(R.id.circular_progress_bar);
         mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
         mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mMenuFav = v.findViewById(R.id.menu_favorite);
     }
 
     private void updateUI() {
+        setAdapter(util.getUserEntries());
+        mCircularProgressBar.setVisibility(View.INVISIBLE);
+        mEntryRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void updateUIFav() {
+        setAdapter(util.getUserFavoriteEntries());
+    }
+
+    private void setAdapter(List<Entry> entries) {
         if (mEntryAdapter == null) {
-            mEntryAdapter = new EntryAdapter();
+            mEntryAdapter = new EntryAdapter(entries);
             mEntryRecyclerView.setAdapter(mEntryAdapter);
         } else {
             mEntryAdapter.notifyDataSetChanged();
         }
-        mCircularProgressBar.setVisibility(View.INVISIBLE);
-        mEntryRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private class EntryHolder extends RecyclerView.ViewHolder {
@@ -157,8 +170,8 @@ public class EntryListFragment extends Fragment {
 
         private List<Entry> mEntries;
 
-        EntryAdapter() {
-            mEntries = util.getUserEntries();
+        EntryAdapter(List<Entry> entries) {
+            mEntries = entries;
         }
 
         @Override

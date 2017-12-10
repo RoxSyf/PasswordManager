@@ -6,7 +6,13 @@
         android:id="@+id/menu_dashboard"
         android:icon="@drawable/ic_dashboard"
         android:title="@string/dashboard"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_favorite"
+        android:icon="@drawable/ic_fav_list_empty"
+        android:title="@string/favorite_entries"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_add"

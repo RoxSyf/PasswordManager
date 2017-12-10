@@ -1,7 +1,6 @@
 package he2b.esi.g41077.passwordmanager.model;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -11,7 +10,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -22,6 +20,7 @@ public class FacadeImplementation implements Facade {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<Entry> entryList = new ArrayList<>();
+    private List<Entry> favoriteEntryList = new ArrayList<>();
 
     private final String key = "Pass41077Manager";
 
@@ -30,31 +29,10 @@ public class FacadeImplementation implements Facade {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        populateListsFromFirebase();
+    }
 
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
-        // todo refactor
+    private void populateListsFromFirebase() {
         getDatabaseReference().child("users").child(getCurrentUser()).child("entries").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,6 +41,8 @@ public class FacadeImplementation implements Facade {
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Entry entry = postSnapshot.getValue(Entry.class);
                         entryList.add(entry);
+                        if (entry.ismFavorite())
+                            favoriteEntryList.add(entry);
                     }
                 }
             }
@@ -103,6 +83,11 @@ public class FacadeImplementation implements Facade {
     @Override
     public List<Entry> getUserEntries() {
         return entryList;
+    }
+
+    @Override
+    public List<Entry> getUserFavoriteEntries() {
+        return favoriteEntryList;
     }
 
     @Override
