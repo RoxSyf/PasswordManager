@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,7 @@ public class EntryFragment extends Fragment {
     private Button mEntryDelete;
     private Button mEntryCancel;
     private Button mEntryConfirm;
+    private ImageButton mButtonFav;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,21 +50,37 @@ public class EntryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_entry, container, false);
-        initToolbar(v);
         initView(v);
+        mButtonFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.isSelected()) {
+                    view.setSelected(false);
+                } else {
+                    mButtonFav.setSelected(false);
+                    view.setSelected(true);
+                }
+            }
+        });
+        isEntryEdit(v);
+        return v;
+    }
+
+    private void isEntryEdit(View v) {
         if (isEntryEdit) {
             setViewEntryEdit();
             mEntryDelete = v.findViewById(R.id.bt_add_cancel_or_remove);
             mEntryDelete.setText("Delete");
+            initToolbarEdit(v);
             setOnClickDeleteButton();
             setOnClickConfirmButtonEdit();
         } else {
             mEntryCancel = v.findViewById(R.id.bt_add_cancel_or_remove);
             mEntryCancel.setText("Cancel");
+            initToolbarAdd(v);
             setOnClickCancelButton();
             setOnClickConfirmButtonAdd();
         }
-        return v;
     }
 
     private void initTypeOfActivity() {
@@ -82,7 +100,7 @@ public class EntryFragment extends Fragment {
                 String uid = UUID.randomUUID().toString();
                 String name = mEntryName.getText().toString();
                 String login = mEntryLogin.getText().toString();
-                util.createEntry(new Entry(uid, name, login, encryptedPassword));
+                util.createEntry(new Entry(uid, name, login, encryptedPassword, mButtonFav.isSelected()));
                 getActivity().finish();
             }
         });
@@ -97,6 +115,7 @@ public class EntryFragment extends Fragment {
                         mEntryName.getText().toString(),
                         mEntryLogin.getText().toString(),
                         encryptedPassword);
+                mEntry.setmFavorite(mButtonFav.isSelected());
                 util.updateEntry(mEntry);
                 getActivity().finish();
             }
@@ -136,6 +155,7 @@ public class EntryFragment extends Fragment {
                         String encryptedPassword = util.decipherPassword(mEntry.getmPassword());
                         mEntryLogin.setText(mEntry.getmLogin());
                         mEntryPassword.setText(encryptedPassword);
+                        mButtonFav.setSelected(mEntry.ismFavorite());
                     }
 
                     @Override
@@ -144,9 +164,17 @@ public class EntryFragment extends Fragment {
                 });
     }
 
-    private void initToolbar(View v) {
+    private void initToolbarEdit(View v) {
         Toolbar toolbar = v.findViewById(R.id.toolbar);
         toolbar.setTitle("Edit entry");
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    }
+
+    private void initToolbarAdd(View v) {
+        Toolbar toolbar = v.findViewById(R.id.toolbar);
+        toolbar.setTitle("Add entry");
+        setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 
@@ -155,7 +183,6 @@ public class EntryFragment extends Fragment {
         mEntryLogin = v.findViewById(R.id.et_entry_login);
         mEntryPassword = v.findViewById(R.id.et_entry_pwd);
         mEntryConfirm = v.findViewById(R.id.bt_add_confirm);
+        mButtonFav = v.findViewById(R.id.ib_fav);
     }
-
-
 }

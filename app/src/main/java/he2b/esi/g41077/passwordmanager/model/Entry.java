@@ -7,6 +7,7 @@ public class Entry {
     private String mName;
     private String mLogin;
     private String mPassword;
+    private boolean mFavorite;
 
     public Entry() {
     }
@@ -16,6 +17,15 @@ public class Entry {
         this.mName = mName;
         this.mLogin = mLogin;
         this.mPassword = mPassword;
+        this.mFavorite = false;
+    }
+
+    public Entry(String mUid, String mName, String mLogin, String mPassword, boolean mFavorite) {
+        this.mUid = mUid;
+        this.mName = mName;
+        this.mLogin = mLogin;
+        this.mPassword = mPassword;
+        this.mFavorite = mFavorite;
     }
 
     public String getmUid() {
@@ -32,5 +42,13 @@ public class Entry {
 
     public String getmPassword() {
         return mPassword;
+    }
+
+    public boolean ismFavorite() {
+        return mFavorite;
+    }
+
+    public void setmFavorite(boolean mFavorite) {
+        this.mFavorite = mFavorite;
     }
 }
