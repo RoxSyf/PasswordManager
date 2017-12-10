@@ -126,7 +126,6 @@ public class EntryListFragment extends Fragment {
         mCircularProgressBar = v.findViewById(R.id.circular_progress_bar);
         mEntryRecyclerView = v.findViewById(R.id.list_entry_recycler);
         mEntryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mMenuFav = v.findViewById(R.id.menu_favorite);
     }
 
     private void updateUI() {
