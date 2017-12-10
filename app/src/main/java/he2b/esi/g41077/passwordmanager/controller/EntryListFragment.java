@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -125,10 +126,12 @@ public class EntryListFragment extends Fragment {
     private class EntryHolder extends RecyclerView.ViewHolder {
         private Entry mEntry;
         private TextView mEntryName;
+        private ImageView mFavorite;
 
         EntryHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.entry_item, parent, false));
             mEntryName = itemView.findViewById(R.id.tv_name);
+            mFavorite = itemView.findViewById(R.id.iv_fav);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -143,6 +146,10 @@ public class EntryListFragment extends Fragment {
         void bind(Entry entry) {
             mEntry = entry;
             mEntryName.setText(entry.getmName());
+            if (mEntry.ismFavorite())
+                mFavorite.setVisibility(View.VISIBLE);
+            else
+                mFavorite.setVisibility(View.GONE);
         }
     }
 

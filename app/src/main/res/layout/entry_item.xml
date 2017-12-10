@@ -24,6 +24,15 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/iv_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingTop="17.5dp"
+            android:src="@drawable/ic_fav"
+            android:visibility="gone" />
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
