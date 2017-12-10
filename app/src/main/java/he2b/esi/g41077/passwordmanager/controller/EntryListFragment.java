@@ -35,7 +35,6 @@ public class EntryListFragment extends Fragment {
     private EntryAdapter mEntryAdapter;
     private FacadeImplementation util;
     private ProgressBar mCircularProgressBar;
-    private MenuItem mMenuFav;
 
     private int access = 0;
 
